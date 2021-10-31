@@ -45,4 +45,28 @@ router.get('/roles/:id', (req, res) => {
     });
 });
 
+// Add a role
+router.post('/roles', ({ body }, res) => {
+    const errors = inputCheck(body, 'name', 'salary', 'department_id');
+    if (errors) {
+        res.status(400).json({ error: errors});
+        return;
+    }
+
+    const sql = `INSERT INTO role (name, salary, department_id)
+                 VALUES (?,?,?)`;
+    const params = [body.name, body.salary, body.department_id];
+
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: body
+        });
+    });
+});
+
 module.exports = router;
