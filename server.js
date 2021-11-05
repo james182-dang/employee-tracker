@@ -35,7 +35,7 @@ db.connect(err => {
     });
 });
 
-const viewTables = () => {
+function start() {
     return inquirer
       .prompt([
           {
