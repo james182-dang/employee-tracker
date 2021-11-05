@@ -49,7 +49,7 @@ function start() {
           let { welcome } = choice;
 
           if (choice = 'View All Departments') {
-
+            
           } else if (choice = 'View All Roles') {
 
           } else if (choice = 'View All Employees') {

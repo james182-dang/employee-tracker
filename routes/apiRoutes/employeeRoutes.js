@@ -5,11 +5,8 @@ const inputCheck = require('../../utils/inputCheck');
 
 // Get all employees
 router.get('/employees', (req, res) => {
-    const sql = `SELECT employee.*, department.name
-                 AS department_name
-                 FROM employee
-                 LEFT JOIN department
-                 ON employee.department_id = department.id`;
+    const sql = `SELECT employee.*
+                 FROM employee`;
 
     db.query(sql, (err, rows) => {
         if (err) {
